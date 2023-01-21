@@ -1,16 +1,36 @@
-# flutter_learning_app
 
-A new Flutter project.
+# Flutter App for learning
 
-## Getting Started
+This is an app I am building while learning Flutter.
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## Run Locally
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Clone the project
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```bash
+  git clone https://link-to-project
+```
+
+Go to the project directory
+
+```bash
+  cd my-project
+```
+
+Start the app
+
+```bash
+  flutter run
+```
+
+
+## Authors
+
+- [@ojpro](https://www.github.com/ojpro)
+
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
