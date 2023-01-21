@@ -9,7 +9,7 @@ This is an app I am building while learning Flutter.
 Clone the project
 
 ```bash
-  git clone https://link-to-project
+  git clone https://github.com/ojpro/flutter_learning_app.git
 ```
 
 Go to the project directory
