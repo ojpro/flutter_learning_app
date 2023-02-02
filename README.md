@@ -1,16 +1,10 @@
 # flutter_learning_app
 
-A new Flutter project.
+A project to learn and practice flutter and dart course
 
-## Getting Started
+## Screenshots
 
-This project is a starting point for a Flutter application.
+### Messanger
 
-A few resources to get you started if this is your first Flutter project:
+![screenshots](screenshots/Screenshot%20from%202023-02-02%2023-56-26.png)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
