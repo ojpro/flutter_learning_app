@@ -1,10 +1,39 @@
-# flutter_learning_app
+# Flutter App for learning
 
-A project to learn and practice flutter and dart course
+This is an app I am building while learning Flutter.
+
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/ojpro/flutter_learning_app.git
+```
+
+Go to the project directory
+
+```bash
+  cd flutter_learning_app
+```
+
+Start the app
+
+```bash
+  flutter run
+```
 
 ## Screenshots
 
-### Messanger
-
 ![screenshots](screenshots/Screenshot%20from%202023-02-02%2023-56-26.png)
+
+
+## Authors
+
+- [@ojpro](https://www.github.com/ojpro)
+
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
 
