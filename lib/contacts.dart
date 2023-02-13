@@ -12,9 +12,9 @@ class ContactModel {
 class ContactsScreen extends StatelessWidget {
   List<ContactModel> contacts = [
     ContactModel(1, "Oussama ELJABBARI", "+212701691713"),
-    ContactModel(2, "Abdlah", "+212701691713"),
+    ContactModel(2, "Abdlah", "+212569937444"),
     ContactModel(3, "Moussa", "+212701691713"),
-    ContactModel(4, "Yassine", "+212701691713"),
+    ContactModel(4, "Yassine", "+212569937444"),
     ContactModel(5, "Yaikoub", "+212701691713"),
   ];
 
@@ -55,14 +55,14 @@ class ContactsScreen extends StatelessWidget {
                   children: [
                     Text(
                       user.name,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
                       user.phone,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 12,
                         color: Colors.grey,
                       ),
