@@ -7,6 +7,13 @@ class BMICalculator extends StatefulWidget {
 }
 
 class _BMICalculatorState extends State<BMICalculator> {
+  Color genderBgColor = Colors.black;
+  Color activeGenderBgColor = Colors.redAccent;
+  bool isMale = true;
+  double silderValue = 180.0;
+  int age = 20;
+  int weight = 60;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,29 +33,36 @@ class _BMICalculatorState extends State<BMICalculator> {
                 child: Row(
                   children: [
                     Expanded(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          color: Colors.black,
-                        ),
-                        padding: const EdgeInsets.symmetric(vertical: 24),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            Icon(
-                              Icons.male_rounded,
-                              color: Colors.white,
-                              size: 52,
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              "Male",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 18),
-                            ),
-                          ],
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            isMale = true;
+                          });
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color: isMale ? activeGenderBgColor : genderBgColor,
+                          ),
+                          padding: const EdgeInsets.symmetric(vertical: 24),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: const [
+                              Icon(
+                                Icons.male_rounded,
+                                color: Colors.white,
+                                size: 52,
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                "Male",
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 18),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -56,29 +70,37 @@ class _BMICalculatorState extends State<BMICalculator> {
                       width: 48,
                     ),
                     Expanded(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          color: Colors.black,
-                        ),
-                        padding: const EdgeInsets.symmetric(vertical: 24),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            Icon(
-                              Icons.female_rounded,
-                              color: Colors.white,
-                              size: 52,
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              "Female",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 18),
-                            )
-                          ],
+                      child: GestureDetector(
+                        onTap: (() {
+                          setState(() {
+                            isMale = false;
+                          });
+                        }),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color:
+                                !isMale ? activeGenderBgColor : genderBgColor,
+                          ),
+                          padding: const EdgeInsets.symmetric(vertical: 24),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: const [
+                              Icon(
+                                Icons.female_rounded,
+                                color: Colors.white,
+                                size: 52,
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                "Female",
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 18),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -113,18 +135,18 @@ class _BMICalculatorState extends State<BMICalculator> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.baseline,
                       textBaseline: TextBaseline.alphabetic,
-                      children: const [
+                      children: [
                         Text(
-                          "180",
-                          style: TextStyle(
+                          "${silderValue.round()}",
+                          style: const TextStyle(
                               color: Colors.white,
                               fontSize: 46,
                               fontWeight: FontWeight.bold),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 4,
                         ),
-                        Text(
+                        const Text(
                           "cm",
                           style: TextStyle(
                             color: Colors.white,
@@ -134,13 +156,15 @@ class _BMICalculatorState extends State<BMICalculator> {
                       ],
                     ),
                     Slider(
-                        value: 180.0,
+                        value: silderValue,
                         max: 240.0,
                         min: 80.0,
                         thumbColor: Colors.red,
                         activeColor: Colors.redAccent,
                         onChanged: (value) {
-                          print(value.round());
+                          setState(() {
+                            silderValue = value.roundToDouble();
+                          });
                         })
                   ],
                 ),
@@ -170,8 +194,8 @@ class _BMICalculatorState extends State<BMICalculator> {
                             const SizedBox(
                               height: 4,
                             ),
-                            const Text(
-                              "24",
+                            Text(
+                              "$age",
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 36,
@@ -185,7 +209,11 @@ class _BMICalculatorState extends State<BMICalculator> {
                               children: [
                                 FloatingActionButton(
                                   backgroundColor: Colors.grey[900],
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    setState(() {
+                                      age -= 1;
+                                    });
+                                  },
                                   child: Icon(Icons.remove),
                                   mini: true,
                                 ),
@@ -194,7 +222,11 @@ class _BMICalculatorState extends State<BMICalculator> {
                                 ),
                                 FloatingActionButton(
                                   backgroundColor: Colors.grey[900],
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    setState(() {
+                                      age += 1;
+                                    });
+                                  },
                                   child: Icon(Icons.add),
                                   mini: true,
                                 ),
@@ -217,7 +249,7 @@ class _BMICalculatorState extends State<BMICalculator> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const Text(
-                              "Age",
+                              "Weight",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 20,
@@ -226,8 +258,8 @@ class _BMICalculatorState extends State<BMICalculator> {
                             const SizedBox(
                               height: 4,
                             ),
-                            const Text(
-                              "24",
+                            Text(
+                              "$weight",
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 36,
@@ -241,7 +273,11 @@ class _BMICalculatorState extends State<BMICalculator> {
                               children: [
                                 FloatingActionButton(
                                   backgroundColor: Colors.grey[900],
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    setState(() {
+                                      weight -= 1;
+                                    });
+                                  },
                                   child: Icon(Icons.remove),
                                   mini: true,
                                 ),
@@ -250,7 +286,11 @@ class _BMICalculatorState extends State<BMICalculator> {
                                 ),
                                 FloatingActionButton(
                                   backgroundColor: Colors.grey[900],
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    setState(() {
+                                      weight += 1;
+                                    });
+                                  },
                                   child: Icon(Icons.add),
                                   mini: true,
                                 ),
