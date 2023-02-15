@@ -137,6 +137,8 @@ class _BMICalculatorState extends State<BMICalculator> {
                         value: 180.0,
                         max: 240.0,
                         min: 80.0,
+                        thumbColor: Colors.red,
+                        activeColor: Colors.redAccent,
                         onChanged: (value) {
                           print(value.round());
                         })
