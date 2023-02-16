@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_learning_app/bmi_result_screen.dart';
 
 class BMICalculator extends StatefulWidget {
+  const BMICalculator({super.key});
+
   @override
   State<BMICalculator> createState() => _BMICalculatorState();
 }
@@ -10,7 +12,7 @@ class _BMICalculatorState extends State<BMICalculator> {
   Color genderBgColor = Colors.black;
   Color activeGenderBgColor = Colors.redAccent;
   bool isMale = true;
-  double silderValue = 180.0;
+  double height = 180.0;
   int age = 20;
   int weight = 60;
 
@@ -137,7 +139,7 @@ class _BMICalculatorState extends State<BMICalculator> {
                       textBaseline: TextBaseline.alphabetic,
                       children: [
                         Text(
-                          "${silderValue.round()}",
+                          "${height.round()}",
                           style: const TextStyle(
                               color: Colors.white,
                               fontSize: 46,
@@ -156,14 +158,14 @@ class _BMICalculatorState extends State<BMICalculator> {
                       ],
                     ),
                     Slider(
-                        value: silderValue,
+                        value: height,
                         max: 240.0,
                         min: 80.0,
                         thumbColor: Colors.red,
                         activeColor: Colors.redAccent,
                         onChanged: (value) {
                           setState(() {
-                            silderValue = value.roundToDouble();
+                            height = value.roundToDouble();
                           });
                         })
                   ],
@@ -196,7 +198,7 @@ class _BMICalculatorState extends State<BMICalculator> {
                             ),
                             Text(
                               "$age",
-                              style: TextStyle(
+                              style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 36,
                                   fontWeight: FontWeight.bold),
@@ -214,8 +216,9 @@ class _BMICalculatorState extends State<BMICalculator> {
                                       age -= 1;
                                     });
                                   },
-                                  child: Icon(Icons.remove),
                                   mini: true,
+                                  heroTag: 'age-',
+                                  child: const Icon(Icons.remove),
                                 ),
                                 const SizedBox(
                                   width: 16,
@@ -227,8 +230,9 @@ class _BMICalculatorState extends State<BMICalculator> {
                                       age += 1;
                                     });
                                   },
-                                  child: Icon(Icons.add),
                                   mini: true,
+                                  heroTag: 'age+',
+                                  child: const Icon(Icons.add),
                                 ),
                               ],
                             ),
@@ -260,7 +264,7 @@ class _BMICalculatorState extends State<BMICalculator> {
                             ),
                             Text(
                               "$weight",
-                              style: TextStyle(
+                              style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 36,
                                   fontWeight: FontWeight.bold),
@@ -278,8 +282,9 @@ class _BMICalculatorState extends State<BMICalculator> {
                                       weight -= 1;
                                     });
                                   },
-                                  child: Icon(Icons.remove),
                                   mini: true,
+                                  heroTag: 'weight-',
+                                  child: const Icon(Icons.remove),
                                 ),
                                 const SizedBox(
                                   width: 16,
@@ -291,8 +296,9 @@ class _BMICalculatorState extends State<BMICalculator> {
                                       weight += 1;
                                     });
                                   },
-                                  child: Icon(Icons.add),
                                   mini: true,
+                                  heroTag: 'weight+',
+                                  child: const Icon(Icons.add),
                                 ),
                               ],
                             ),
@@ -313,7 +319,18 @@ class _BMICalculatorState extends State<BMICalculator> {
               child: MaterialButton(
                 minWidth: double.infinity,
                 height: 52,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => BMIResultScreen(
+                              isMale,
+                              height,
+                              age,
+                              weight,
+                            )),
+                  );
+                },
                 child: const Text(
                   "CALCULATE",
                   style: TextStyle(color: Colors.white),
