@@ -1,4 +1,3 @@
-
 # Flutter App for learning
 
 This is an app I am building while learning Flutter.
@@ -23,6 +22,10 @@ Start the app
 ```bash
   flutter run
 ```
+
+## Screenshots
+
+![screenshots](screenshots/Screenshot%20from%202023-02-03%2000-11-56.png)
 
 
 ## Authors
