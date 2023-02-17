@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learning_app/screens/messanger.dart';
+import 'package:flutter_learning_app/modules/bmi/bmi_calculator.dart';
+import 'package:flutter_learning_app/modules/contacts/contacts.dart';
+import 'package:flutter_learning_app/modules/login/login.dart';
+import 'package:flutter_learning_app/modules/messanger/messanger.dart';
 
 void main() {
-  runApp(App());
+  runApp(MyApp());
 }
 
-class App extends StatelessWidget {
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MessangerScreen(),
+    return const MaterialApp(
+      home: BMICalculator(),
       debugShowCheckedModeBanner: false,
     );
   }

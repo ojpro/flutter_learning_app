@@ -9,7 +9,8 @@ class BMIResultScreen extends StatelessWidget {
   final int weight;
   int result = 0;
 
-  BMIResultScreen(this.isMale, this.height, this.age, this.weight) {
+  BMIResultScreen(this.isMale, this.height, this.age, this.weight,
+      {super.key}) {
     result = (weight / pow(height / 100, 2)).round();
   }
 

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class ContactModel {
   final int id;
@@ -17,6 +16,8 @@ class ContactsScreen extends StatelessWidget {
     ContactModel(4, "Yassine", "+212569937444"),
     ContactModel(5, "Yaikoub", "+212701691713"),
   ];
+
+  ContactsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

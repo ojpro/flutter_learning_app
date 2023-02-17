@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learning_app/bmi_result_screen.dart';
+import 'package:flutter_learning_app/modules/bmi/bmi_result_screen.dart';
 
 class BMICalculator extends StatefulWidget {
   const BMICalculator({super.key});
