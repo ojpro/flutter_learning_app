@@ -25,7 +25,7 @@ Start the app
 
 ## Screenshots
 
-![screenshots](screenshots/Screenshot%20from%202023-02-03%2000-11-56.png)
+![screenshots](screenshots/Screenshot%20from%202023-02-02%2023-56-26.png)
 
 
 ## Authors

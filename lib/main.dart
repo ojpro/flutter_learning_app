@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learning_app/counter.dart';
+import 'package:flutter_learning_app/screens/messanger.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(App());
 }
 
-class MyApp extends StatelessWidget {
+class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: CounterScreen());
+    return MaterialApp(
+      home: MessangerScreen(),
+      debugShowCheckedModeBanner: false,
+    );
   }
 }
