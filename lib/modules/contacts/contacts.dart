@@ -1,20 +1,13 @@
 import 'package:flutter/material.dart';
-
-class ContactModel {
-  final int id;
-  final String name;
-  final String phone;
-
-  ContactModel(this.id, this.name, this.phone);
-}
+import 'package:flutter_learning_app/models/contacts/user_model.dart';
 
 class ContactsScreen extends StatelessWidget {
-  List<ContactModel> contacts = [
-    ContactModel(1, "Oussama ELJABBARI", "+212701691713"),
-    ContactModel(2, "Abdlah", "+212569937444"),
-    ContactModel(3, "Moussa", "+212701691713"),
-    ContactModel(4, "Yassine", "+212569937444"),
-    ContactModel(5, "Yaikoub", "+212701691713"),
+  List<UserContactModel> contacts = [
+    UserContactModel(1, "Oussama ELJABBARI", "+212701691713"),
+    UserContactModel(2, "Abdlah", "+212569937444"),
+    UserContactModel(3, "Moussa", "+212701691713"),
+    UserContactModel(4, "Yassine", "+212569937444"),
+    UserContactModel(5, "Yaikoub", "+212701691713"),
   ];
 
   ContactsScreen({super.key});
@@ -38,7 +31,7 @@ class ContactsScreen extends StatelessWidget {
     );
   }
 
-  Widget buildContactsWidget(ContactModel user) => Padding(
+  Widget buildContactsWidget(UserContactModel user) => Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
