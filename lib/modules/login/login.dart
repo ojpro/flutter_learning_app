@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_learning_app/shared/components/components.dart';
 
 class LoginScreen extends StatelessWidget {
   // Fields Controllers
@@ -35,12 +36,6 @@ class LoginScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                margin: EdgeInsets.only(bottom: 48),
-                child: Image.network(
-                    "https://cdn-icons-png.flaticon.com/512/3293/3293466.png",
-                    cacheWidth: 92),
-              ),
               Text(
                 "Welcome Back!",
                 style: TextStyle(
@@ -77,23 +72,7 @@ class LoginScreen extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              MaterialButton(
-                minWidth: double.infinity,
-                padding: const EdgeInsets.symmetric(
-                  vertical: 20,
-                ),
-                elevation: 0,
-                color: Colors.blueAccent,
-                onPressed: () {
-                  print(emailController.text);
-                  print("\n ");
-                  print(passwordController.text);
-                },
-                child: const Text(
-                  "Login",
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
+              DefaultButton(title: "login", onClick: () {}),
               SizedBox(
                 height: 10,
               ),
