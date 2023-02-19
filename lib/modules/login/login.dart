@@ -7,6 +7,7 @@ class LoginScreen extends StatelessWidget {
   // Fields Controllers
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
+  var formKey = GlobalKey<FormState>();
 
   LoginScreen({super.key});
 
@@ -33,65 +34,86 @@ class LoginScreen extends StatelessWidget {
             horizontal: 20,
           ),
           width: double.infinity,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "Welcome Back!",
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              TextFormField(
-                controller: emailController,
-                keyboardType: TextInputType.emailAddress,
-                decoration: const InputDecoration(
-                  labelText: "Email Address",
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.email),
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              TextFormField(
-                controller: passwordController,
-                keyboardType: TextInputType.visiblePassword,
-                obscureText: true,
-                decoration: const InputDecoration(
-                  labelText: "Enter Password",
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.lock),
-                  suffixIcon: Icon(Icons.remove_red_eye),
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              DefaultButton(title: "login", onClick: () {}),
-              SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "You don't have an account?",
+          child: Form(
+            key: formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Welcome Back!",
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
                   ),
-                  TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      "Sign-up",
-                      style: TextStyle(color: Colors.blueAccent),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                TextFormField(
+                  validator: (value) {
+                    if (value == '') {
+                      return "Email is not valid";
+                    }
+                    return null;
+                  },
+                  controller: emailController,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: const InputDecoration(
+                    labelText: "Email Address",
+                    border: OutlineInputBorder(),
+                    prefixIcon: Icon(Icons.email),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  validator: (value) {
+                    if (value == "") {
+                      return "Password is too short";
+                    }
+                    return null;
+                  },
+                  controller: passwordController,
+                  keyboardType: TextInputType.visiblePassword,
+                  obscureText: true,
+                  decoration: const InputDecoration(
+                    labelText: "Enter Password",
+                    border: OutlineInputBorder(),
+                    prefixIcon: Icon(Icons.lock),
+                    suffixIcon: Icon(Icons.remove_red_eye),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                DefaultButton(
+                    title: "login",
+                    onClick: () {
+                      if (formKey.currentState!.validate()) {
+                        print("Logining");
+                      }
+                    }),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "You don't have an account?",
                     ),
-                  ),
-                ],
-              ),
-            ],
+                    TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        "Sign-up",
+                        style: TextStyle(color: Colors.blueAccent),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
