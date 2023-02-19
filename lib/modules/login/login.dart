@@ -2,14 +2,26 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_learning_app/shared/components/components.dart';
+import 'package:flutter_learning_app/shared/components/inputs.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
+  LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   // Fields Controllers
   var emailController = TextEditingController();
-  var passwordController = TextEditingController();
-  var formKey = GlobalKey<FormState>();
 
-  LoginScreen({super.key});
+  var passwordController = TextEditingController();
+
+  var formKey = GlobalKey<FormState>();
+  bool hidePassword = true;
+
+  @override
+  void initState() {}
 
   @override
   Widget build(BuildContext context) {
@@ -49,41 +61,39 @@ class LoginScreen extends StatelessWidget {
                 SizedBox(
                   height: 30,
                 ),
-                TextFormField(
-                  validator: (value) {
-                    if (value == '') {
+                DefaultInput(
+                  label: "Email",
+                  controller: emailController,
+                  validation: (value) {
+                    if (value == "") {
                       return "Email is not valid";
                     }
                     return null;
                   },
-                  controller: emailController,
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: const InputDecoration(
-                    labelText: "Email Address",
-                    border: OutlineInputBorder(),
-                    prefixIcon: Icon(Icons.email),
-                  ),
+                  type: TextInputType.emailAddress,
+                  prefix: Icons.email,
                 ),
                 SizedBox(
                   height: 20,
                 ),
-                TextFormField(
-                  validator: (value) {
-                    if (value == "") {
-                      return "Password is too short";
-                    }
-                    return null;
-                  },
-                  controller: passwordController,
-                  keyboardType: TextInputType.visiblePassword,
-                  obscureText: true,
-                  decoration: const InputDecoration(
-                    labelText: "Enter Password",
-                    border: OutlineInputBorder(),
-                    prefixIcon: Icon(Icons.lock),
-                    suffixIcon: Icon(Icons.remove_red_eye),
-                  ),
-                ),
+                DefaultInput(
+                    label: "Password",
+                    controller: passwordController,
+                    validation: (value) {
+                      if (value == "") {
+                        return "Password too short";
+                      }
+                      return null;
+                    },
+                    type: TextInputType.visiblePassword,
+                    isPassword: hidePassword,
+                    prefix: Icons.lock,
+                    suffix: Icons.remove_red_eye,
+                    onSuffixPressed: () {
+                      setState(() {
+                        hidePassword = !hidePassword;
+                      });
+                    }),
                 SizedBox(
                   height: 20,
                 ),
