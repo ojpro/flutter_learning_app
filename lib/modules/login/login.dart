@@ -88,9 +88,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     type: TextInputType.visiblePassword,
                     isPassword: hidePassword,
                     prefix: Icons.lock,
-                    suffix: hidePassword
-                        ? Icons.remove_red_eye
-                        : Icons.remove_red_eye_outlined,
+                    suffix:
+                        hidePassword ? Icons.visibility : Icons.visibility_off,
                     onSuffixPressed: () {
                       setState(() {
                         hidePassword = !hidePassword;
